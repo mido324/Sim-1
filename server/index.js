@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const massive = require('massive')
+const controller = require('./controller');
 require('dotenv').config()
 const app = express() // simulation -1 74C
 app.use(bodyParser.json()) //simulation -1 72C 76F
@@ -12,14 +14,14 @@ massive(process.env.CONNECTION_STRING).then(db => { // simulation -1 70C
 }).catch(err => console.log(err));
 
 // 
-app.get('/api/shelf/:id', ctrl.getShelf); //simulation -1 74D-1
+app.get('/api/shelf/:id', controller.get_shelf); //simulation -1 74D-1
 // 74 D - 2
 // 74 D - 3
 // 74 D - 4
-app.get('/api/bin/:id', ctrl.getBin);
-app.put('/api/bin/:id', ctrl.updateBin);
-app.delete('/api/bin/:id', ctrl.deleteBin);
-app.post('/api/bin/:id', ctrl.createBin);
+// app.get('/api/bin/:id', ctrl.getBin);
+// app.put('/api/bin/:id', ctrl.updateBin);
+// app.delete('/api/bin/:id', ctrl.deleteBin);
+// app.post('/api/bin/:id', ctrl.createBin);
 
 
 const port = process.env.PORT || 3001;

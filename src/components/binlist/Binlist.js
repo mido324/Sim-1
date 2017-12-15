@@ -8,22 +8,23 @@ this.state = { //simulation -1 36C
             bins: [],
             id: ''
         }
-this.getShelf = this.getShelf.bind(this);
+this.get_shelf = this.get_shelf.bind(this);
+
+
     }
 
     get_shelf () {
 
         return axios
-        .get(`http:localhost:3001/api/shelf/`) // simulation -1 42J
-            .then(res => //simulation -1 37D
+.get('http:localhost:3001/api/shelf/') // simulation -1 42J
+                                            .then(res => //simulation -1 37D  44D
                  {
-               
-                this.setState({bin: res.data})
-                console.log(res.data);
+    this.setState({bin: res.data})
+    console.log(res.data);
             }) 
     }
 componentDidMount() {
-    getShelf() //simulation -1 //39C
+    this.get_shelf() //simulation -1 //39C
 }
     
 render() { //simulation-1 38D
@@ -35,7 +36,7 @@ render() { //simulation-1 38D
 
     return (
         <div>
-                {this.state.bins}
+                {bins}
             </div>
         );
     }
